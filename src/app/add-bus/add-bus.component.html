@@ -1,0 +1,35 @@
+<!-- <app-nav-bar></app-nav-bar>
+<div class="container"> -->
+  <h2 class="text-center">Add Bus Details</h2>
+  <div class="col md-6 offset-md-3">
+    
+    <form (ngSubmit) ="onSubmit()" style="width: 500px;">
+            <div class="form-group">
+              <label for="busName" class="form-label">Bus Name</label>
+              <input type="text" class="form-control" id="busName" name="busName" [(ngModel)]="bus.busName" >
+            </div>
+            <div class="form-group">
+              <label for="seats" class="form-label">Total Seats</label>
+              <input type="number" class="form-control" id="seats" name="total_seats" [(ngModel)]="bus.total_seats">
+            </div>
+            <div class="form-group">
+                <label for="startPoint" class="form-label">Start City Name</label>
+                <input type="text" class="form-control" id="startPoint" name="startPoint" [(ngModel)]="bus.startPoint">
+            </div>
+            <div class="form-group">
+                <label for="endPoint" class="form-label">End City Name</label>
+                <input type="text" class="form-control" id="endPoint" name="endPoint" [(ngModel)]="bus.endPoint">
+            </div>
+            <div class="form-group">
+                <label for="price" class="form-label">Price Per Seat</label>
+                <input type="number" class="form-control" id="price" name="pricePerSeat" [(ngModel)]="bus.pricePerSeat">
+            </div>
+            <br>
+            
+            <div class="container" style="align-items: center;">
+              <button type="submit" class="btn btn-success" style="margin: 10px;">Submit</button>
+              <button routerLink="/bus-list" class="btn btn-success" style="margin: 10px;">Cancel</button>
+          </div>
+    </form>
+  </div>
+<!-- </div> -->

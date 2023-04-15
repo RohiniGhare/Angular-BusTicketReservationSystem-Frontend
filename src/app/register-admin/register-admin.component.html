@@ -1,0 +1,103 @@
+<div class="container" style="background-color: #bbdefb">
+    <div class="row">
+      <div class="col">
+          <img src="https://media.istockphoto.com/vectors/public-city-bus-concept-illustration-vector-id841955156?b=1&k=20&m=841955156&s=612x612&w=0&h=BYYdw24nlxJt0JvYHRHM3K3DGrXVAVhS2fnZiRyEoLk=" class="mh-100 rounded float-left" alt="image not visible" style="height: 90vh; width:90vh;">
+      </div>
+      <div class="col">
+          <div class="container" style="width:500px;">
+              <div class="mx-auto mt-3 text-align:center;">
+                  <h2>Sign up</h2><br>
+              </div>
+              <!-- <form action="processForm" method="post" modelAttribute="admin" (ngSubmit)="adminRegister()"> -->
+                <form (ngSubmit)="adminRegister()" #registerForm="ngForm">
+                <div class="form-group">
+                      <label for="exampleInputName">Name</label>
+                      <input type="text" class="form-control" id="exampleInputName" 
+                      placeholder="Enter name" path="adminName" required="required" 
+                      name="adminName" [(ngModel)]="admin.adminName"
+                      #name="ngModel" [class.is-invalid]="name.invalid && name.touched">
+                      
+                      <div *ngIf="name.errors && (name.invalid && name.touched)">
+                          <small class="text-danger" *ngIf="name.errors?.['required']">Name is required !!</small>
+                      </div>
+
+                  </div>
+                  <br>
+                  <div class="form-group">
+                      <label for="phoneNo">Mobile Number</label>
+                      <input type="number" class="form-control" id="phoneNo" 
+                      placeholder="Enter PhoneNo" path="phoneNo" 
+                      required="required" name="phoneNo" 
+                      [(ngModel)]="admin.phoneNo" #phoneNo="ngModel"
+                      [class.is-invalid]="phoneNo.invalid && phoneNo.touched"
+                      >
+
+                      <div *ngIf="phoneNo.errors && (phoneNo.invalid && phoneNo.touched)">
+                        <small class="text-danger" *ngIf="phoneNo.errors?.['required']">Contact number is required !!</small>
+                    </div>
+                      
+                  </div>
+                  <br>
+                  <div class="form-group">
+                      <label for="email">Email address</label>
+                      <input type="email" class="form-control" id="email" 
+                      placeholder="Enter email" path="emailId" 
+                      required="required" name="emailId" 
+                      [(ngModel)]="admin.emailId" 
+                      pattern="\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" #email="ngModel" 
+                      [class.is-invalid]="email.invalid && email.touched">
+                      
+                      <div *ngIf="email.errors && (email.invalid && email.touched)">
+                        <small class="text-danger" *ngIf="email.errors?.['required']">Email Id is required !!</small>
+                        <small class="text-danger" *ngIf="email.errors?.['pattern']">Email Id is not valid !!</small>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="pass">Password</label>
+                            <input type="password" class="form-control" id="pass" 
+                            placeholder="Minimum length is 4" path="password" required="required"
+                            name="password" [(ngModel)]="admin.password" minlength="4"
+                            #password="ngModel" [class.is-invalid]="password.invalid && password.touched">
+                            
+                            <div *ngIf="password.errors && (password.invalid && password.touched)">
+                                <small class="text-danger" *ngIf="password.errors?.['required']">Password is required !!</small>
+                                <small class="text-danger" *ngIf="password.errors?.['minlength']">Minimum length of password must be 4 !!</small>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="cpass">Confirm Password</label>
+                            <input type="password" class="form-control" id="cpass" 
+                            placeholder="Minimum length is 4" path="password" required="required"
+                            name="cpass" (ngModel)="admin.password" minlength="4"
+                            #cpassword="ngModel" [class.is-invalid]="cpassword.invalid && cpassword.touched">
+                        </div>
+
+                        <div *ngIf="cpassword.errors && 
+                                    (cpassword.invalid && cpassword.touched) || 
+                                    (cpassword.value!=password.value)">
+                            
+                                    <small class="text-danger" *ngIf="cpassword.errors?.['required']">
+                                        Password is required !!</small>
+                                    <!--<small class="text-danger" *ngIf="cpassword.errors?.['minlength']">
+                                        Minimum length of password must be 4 !!</small> -->
+                                    <small class="text-danger" *ngIf="cpassword.value != password.value">
+                                        Password and Confirm Password does not match !!</small>
+                        </div>
+                    </div>
+
+                  </div>
+                  <br>
+                  <button [disabled]="registerForm.form.invalid" type="submit" class="btn btn-primary">Submit</button>
+                  <!-- <b class="errors" style="color:red">${invalidRegister}</b> -->
+              </form>
+          </div>
+      </div>
+  </div>
+</div> 

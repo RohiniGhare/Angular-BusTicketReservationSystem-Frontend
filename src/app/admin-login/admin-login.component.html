@@ -1,0 +1,61 @@
+<div class="container ml-1" style="background-color: #bbdefb">
+    <div class="row">
+        <div class="col">
+            <img src="https://media.istockphoto.com/vectors/public-city-bus-concept-illustration-vector-id841955156?b=1&k=20&m=841955156&s=612x612&w=0&h=BYYdw24nlxJt0JvYHRHM3K3DGrXVAVhS2fnZiRyEoLk=" class="mh-100 rounded float-left" alt="image not visible" style="height: 90vh; width:100vh;">
+        </div>
+        <div class="col">
+            <div class="container mt-3" style="width:350px;">
+                <div class="mx-auto mt-5" style="text-align:center;">
+                    <h2>Sign In</h2><br>
+                </div>
+        
+                <form (ngSubmit)="loginProcess()" #loginForm ="ngForm">
+                    <!-- {{loginForm.form.valid}} -->
+                    
+                    <small class="text-danger">{{msg}}</small>
+
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" 
+                        placeholder="Enter email" path="username" name="emailId"
+                        [(ngModel)]="adminLogin.emailId" required
+                        pattern="\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                        #email="ngModel" [class.is-invalid]="email.invalid && email.touched">
+                        
+                        <!-- <small class="text-danger" [class.d-none]="email.valid || email.untouched">
+                            Email Id is required !!</small> -->
+                            <div *ngIf="email.errors && (email.invalid && email.touched)">
+                                <small class="text-danger" *ngIf="email.errors?.['required']">Email Id is required !!</small>
+                                <small class="text-danger" *ngIf="email.errors?.['pattern']">Email Id is not valid !!</small>
+                            </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" 
+                        placeholder="Password" path="password" name="password"
+                        [(ngModel)]="adminLogin.password" required minlength="4"
+                        #password="ngModel" [class.is-invalid]="password.invalid && password.touched">
+
+                        <!-- <small class="text-danger" [class.d-none]="password.valid || password.untouched">
+                            Password is required !!
+                        </small> -->
+                        
+                        <div *ngIf="password.errors && (password.invalid && password.touched)">
+                            <small class="text-danger" *ngIf="password.errors?.['required']">Password is required !!</small>
+                            <small class="text-danger" *ngIf="password.errors?.['minlength']">Minimum length of password must be 4 !!</small>
+                        </div>
+                        
+                    </div>
+                    <br>
+            
+                    <button [disabled]="loginForm.form.invalid" type="submit" class="btn btn-primary">Submit</button>
+                    
+                    <a routerLink="admin-forgot-password" style="margin: 10px;" >Forgot Password?</a>
+                </form>
+                <!-- <b class="errors" style="color:red">${invalidLogin }</b> -->
+            </div>
+        </div>
+    </div>
+</div> 

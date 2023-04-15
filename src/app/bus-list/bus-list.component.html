@@ -1,0 +1,33 @@
+<!-- <app-nav-bar></app-nav-bar>
+<div class="container"> -->
+    <h2>Bus List</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Bus ID</th>
+                <th>Bus Name</th>
+                <th>Capacity</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Price Per Seat</th>
+                <!-- <th>Date</th> -->
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let b of buses">
+                <td>{{b.busId}}</td>
+                <td>{{b.busName}}</td>
+                <td>{{b.total_seats}}</td>
+                <td>{{b.startPoint}}</td>
+                <td>{{b.endPoint}}</td>
+                <td>{{b.pricePerSeat}}</td>
+                <!-- <td>{{b.date}}</td> -->
+                <td>
+                    <button (click)="updateBus(b.busId)" class="btn btn-info ">Update</button>
+                    <button (click)="deleteBus(b.busId)" class="btn btn-primary" style="margin-left: 10px;">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<!-- </div> -->
